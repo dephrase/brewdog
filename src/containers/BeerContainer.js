@@ -19,8 +19,6 @@ const BeerContainer = () => {
         fetchArray[4] = fetch("https://api.punkapi.com/v2/beers?page=5&per_page=80").then(results => results.json())
         Promise.all(fetchArray)
         .then(beers => setAllBeers(beers.flat()))
-
-        
     }
 
     useEffect(() => {

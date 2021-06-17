@@ -54,6 +54,7 @@ const BeerDetail = ({selectedBeer, onFavourite, favouriteBeers}) => {
             <h4>{selectedBeer.abv}</h4>
             <h4>{selectedBeer.tagline}</h4>
             <h4>{selectedBeer.description}</h4>
+            <img src={selectedBeer.image_url}/>
             
             <button onClick={handleFavourite}>Favourite</button>
             {renderFavourite()}
