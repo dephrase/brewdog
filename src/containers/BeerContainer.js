@@ -8,10 +8,19 @@ const BeerContainer = () => {
     const [selectedBeer, setSelectedBeer] = useState(null)
     const [favouriteBeers, setFavouriteBeers] = useState([])
 
+    let fetchArray = []
+
     const getBeers = () => {
-        fetch("https://api.punkapi.com/v2/beers")
-        .then(results => results.json())
-        .then(beers => setAllBeers(beers))
+
+        fetchArray[0] = fetch("https://api.punkapi.com/v2/beers?page=1&per_page=80").then(results => results.json())
+        fetchArray[1] = fetch("https://api.punkapi.com/v2/beers?page=2&per_page=80").then(results => results.json())
+        fetchArray[2] = fetch("https://api.punkapi.com/v2/beers?page=3&per_page=80").then(results => results.json())
+        fetchArray[3] = fetch("https://api.punkapi.com/v2/beers?page=4&per_page=80").then(results => results.json())
+        fetchArray[4] = fetch("https://api.punkapi.com/v2/beers?page=5&per_page=80").then(results => results.json())
+        Promise.all(fetchArray)
+        .then(beers => setAllBeers(beers.flat()))
+
+        
     }
 
     useEffect(() => {
